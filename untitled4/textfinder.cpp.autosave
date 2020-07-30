@@ -62,9 +62,15 @@ SINT i=9;
 USINT J=8;
 qDebug()<<i << ";"<<J <<endl;
 
-typedef char* Pstring;
-Pstring str= (char*)("This is a string!");
+typedef  char const* Pstring;
+//Pstring str= (char*)("This is a string!");
+Pstring str= "This is a string!";
 qDebug()<<str;
+
+char *pch = new char();
+*pch = 't';
+
+
 
 typedef struct mypoint{
     float x;

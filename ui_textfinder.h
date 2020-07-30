@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
@@ -22,6 +23,8 @@ class Ui_TextFinder
 {
 public:
     QTableView *tableView;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
@@ -30,19 +33,41 @@ public:
     {
         if (TextFinder->objectName().isEmpty())
             TextFinder->setObjectName(QString::fromUtf8("TextFinder"));
-        TextFinder->resize(1152, 767);
+        TextFinder->resize(763, 749);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(TextFinder->sizePolicy().hasHeightForWidth());
+        TextFinder->setSizePolicy(sizePolicy);
         tableView = new QTableView(TextFinder);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(40, 50, 691, 431));
-        pushButton = new QPushButton(TextFinder);
+        tableView->setGeometry(QRect(10, 10, 691, 431));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(tableView->sizePolicy().hasHeightForWidth());
+        tableView->setSizePolicy(sizePolicy1);
+        widget = new QWidget(TextFinder);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(60, 690, 521, 30));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButton = new QPushButton(widget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(90, 680, 93, 28));
-        pushButton_2 = new QPushButton(TextFinder);
+
+        horizontalLayout->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(widget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(330, 680, 93, 28));
-        pushButton_3 = new QPushButton(TextFinder);
+
+        horizontalLayout->addWidget(pushButton_2);
+
+        pushButton_3 = new QPushButton(widget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(560, 680, 93, 28));
+
+        horizontalLayout->addWidget(pushButton_3);
+
 
         retranslateUi(TextFinder);
 
